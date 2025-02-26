@@ -3,6 +3,10 @@ var effects = {
 	"bullet" : preload("res://effects/bullet.tscn")
 }
 
+func get_player_position():
+	return $Player.global_position
+	
+
 func spawn_effect(effect_name : String, pos : Vector2, mode_id = 0):
 	var effect_instance = null
 	if effect_name in effects.keys():

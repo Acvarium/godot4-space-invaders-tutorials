@@ -25,5 +25,9 @@ func make_step(step_direction : Vector2) -> float:
 	return wall_distance
 
 
+func fire():
+	$FirePoint.fire()
+
+
 func hit():
 	queue_free()

@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d18mh8rttryp2"]
+[gd_scene load_steps=8 format=3 uid="uid://d18mh8rttryp2"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_uaaoj"]
 [ext_resource type="Script" path="res://main.gd" id="1_vbdtj"]
 [ext_resource type="Script" path="res://squad.gd" id="2_11op5"]
-[ext_resource type="PackedScene" uid="uid://dkrpukflxoaua" path="res://enemy.tscn" id="3_ia3s0"]
 [ext_resource type="Script" path="res://fire_point.gd" id="3_n56mb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sihl8"]
@@ -55,76 +54,20 @@ script = ExtResource("2_11op5")
 
 [node name="Enemies" type="Node2D" parent="Squad"]
 
-[node name="Enemy" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
+[node name="EnemyBasePos" type="Node2D" parent="Squad"]
 position = Vector2(128, 320)
 
-[node name="Enemy2" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(192, 320)
+[node name="EnemyYOffset" type="Node2D" parent="Squad"]
+position = Vector2(128, 261)
 
-[node name="Enemy3" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(256, 320)
+[node name="EnemyXOffset" type="Node2D" parent="Squad"]
+position = Vector2(184, 320)
 
-[node name="Enemy4" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(320, 320)
-
-[node name="Enemy5" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(384, 320)
-
-[node name="Enemy6" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(448, 320)
-
-[node name="Enemy7" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(512, 320)
-
-[node name="Enemy8" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(576, 320)
-
-[node name="Enemy9" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(128, 256)
-
-[node name="Enemy10" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(192, 256)
-
-[node name="Enemy11" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(256, 256)
-
-[node name="Enemy12" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(320, 256)
-
-[node name="Enemy13" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(384, 256)
-
-[node name="Enemy14" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(448, 256)
-
-[node name="Enemy15" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(512, 256)
-
-[node name="Enemy16" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(576, 256)
-
-[node name="Enemy17" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(128, 192)
-
-[node name="Enemy18" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(192, 192)
-
-[node name="Enemy19" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(256, 192)
-
-[node name="Enemy20" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(320, 192)
-
-[node name="Enemy21" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(384, 192)
-
-[node name="Enemy22" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(448, 192)
-
-[node name="Enemy23" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(512, 192)
-
-[node name="Enemy24" parent="Squad/Enemies" instance=ExtResource("3_ia3s0")]
-position = Vector2(576, 192)
+[node name="FireTimer" type="Timer" parent="Squad"]
+wait_time = 2.0
+one_shot = true
+autostart = true
 
 [node name="Effects" type="Node2D" parent="."]
+
+[connection signal="timeout" from="Squad/FireTimer" to="Squad" method="_on_fire_timer_timeout"]
