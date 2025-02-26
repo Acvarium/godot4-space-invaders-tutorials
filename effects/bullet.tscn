@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmffdjwdkypct"]
+
+[ext_resource type="Script" path="res://effects/bullet.gd" id="1_ufic5"]
+[ext_resource type="PackedScene" uid="uid://oq3vt64wx6yw" path="res://kill_timer.tscn" id="2_3c11m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4r12c"]
+size = Vector2(2, 32)
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_ufic5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4r12c")
+metadata/_edit_lock_ = true
+
+[node name="KillTimer" parent="." instance=ExtResource("2_3c11m")]
+wait_time = 2.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -23,3 +23,7 @@ func make_step(step_direction : Vector2) -> float:
 		wall_distance = MAX_X_POS - position.x
 	
 	return wall_distance
+
+
+func hit():
+	queue_free()
